@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { GlobalStyle } from './fonts';
 /*
   This Collatz 方法将所有的计算都放在了 render 方法中，这样每次 render 都会重新计算一次。
   这样做是不好的，因为这样会导致性能问题。
@@ -90,7 +91,7 @@ class Collatz extends Component {
         <ul>
           {
             outputArr.map((x, ind) => {
-              return <SpecialListItem key={ind}>{x}
+              return <SpecialListItem listStyleType = "circle" key={ind}>{x}
               </SpecialListItem>;
             })
           }
@@ -120,7 +121,9 @@ const RightColumn = styled.div`
 const EmphaticPar = styled.p`
         font-style: oblique;
 `;
-const VeryEmphaticPar = styled(EmphaticPar)` font-size: 150%;
+const VeryEmphaticPar = styled(EmphaticPar)` 
+        font-family: 'Jersey 15', sans-serif;
+        font-size: 150%;
 `;
 const SpecialListItem = styled.li`
         font-weight: bold;
@@ -134,6 +137,8 @@ class App extends Component {
     const number = 17;
     const wikilink = 'https://en.wikipedia.org/wiki/Collatz_conjecture';
     return (
+      <>
+      <GlobalStyle />
       <GridDiv>
         <LeftColumn>
           <h1>Collatz Conjecture</h1>
@@ -145,7 +150,9 @@ class App extends Component {
         <RightColumn>
           <Collatz number={number} />
         </RightColumn>
-      </GridDiv>);
+      </GridDiv>
+      </>);
+
   }
 }
 export default App;
